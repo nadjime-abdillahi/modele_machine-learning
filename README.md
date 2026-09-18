@@ -1,4 +1,4 @@
 # modele_machine-learning
-# modele_machine-learning
-# modele_machine-learning
-# modele_machine-learning
+# git init
+# git status
+

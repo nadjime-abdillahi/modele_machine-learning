@@ -1,0 +1,10 @@
+2026-08-11 17:17:57.085 EAT [9001] LOG:  démarrage de PostgreSQL 16.14 (Homebrew) on x86_64-apple-darwin23.6.0, compiled by Apple clang version 16.0.0 (clang-1600.0.26.6), 64-bit
+2026-08-11 17:17:57.087 EAT [9001] LOG:  n'a pas pu lier IPv6 à l'adresse « ::1 » : Address already in use
+2026-08-11 17:17:57.087 EAT [9001] ASTUCE :  Un autre postmaster fonctionne-t'il déjà sur le port 5432 ?
+	Sinon, attendez quelques secondes et réessayez.
+2026-08-11 17:17:57.087 EAT [9001] LOG:  n'a pas pu lier IPv4 à l'adresse « 127.0.0.1 » : Address already in use
+2026-08-11 17:17:57.087 EAT [9001] ASTUCE :  Un autre postmaster fonctionne-t'il déjà sur le port 5432 ?
+	Sinon, attendez quelques secondes et réessayez.
+2026-08-11 17:17:57.087 EAT [9001] ATTENTION:  n'a pas pu créer le socket d'écoute pour « localhost »
+2026-08-11 17:17:57.088 EAT [9001] FATAL:  n'a pas pu créer de socket TCP/IP
+2026-08-11 17:17:57.088 EAT [9001] LOG:  le système de base de données est arrêté
