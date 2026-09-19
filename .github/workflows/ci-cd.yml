@@ -82,7 +82,7 @@ jobs:
       - name: Récupérer le code
         uses: actions/checkout@v4
 
-      - name: Déployer en Production
+      - name: Déployement en Production
         run: |
           echo "Déploiement sur l'environnement de Production..."
         env:
