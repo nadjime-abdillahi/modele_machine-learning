@@ -29,7 +29,7 @@ jobs:
           cache: 'pip'
 
       - name: Contrôle de la qualité du code (Linter)
-        run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics --exclude=.venv,.git,__pycache__,build,dist
+        run: flake8 app tests --count --select=E9,F63,F7,F82 --show-source --statistics
 
       - name: Installation des dépendances
         run: |
