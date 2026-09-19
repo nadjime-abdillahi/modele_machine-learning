@@ -28,17 +28,14 @@ jobs:
           python-version: '3.10'
           cache: 'pip'
 
-      - name: Contrôle de la qualité du code (Linter)
-        run: flake8 app tests --count --select=E9,F63,F7,F82 --show-source --statistics
-
       - name: Installation des dépendances
         run: |
-            python -m pip install --upgrade pip
-            python -m pip install --no-cache-dir pytest flake8 pytest-cov
-            if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          python -m pip install pytest pytest-cov flake8 httpx
 
       - name: Contrôle de la qualité du code (Linter)
-        run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        run: python -m flake8 app tests --count --select=E9,F63,F7,F82 --show-source --statistics
 
       - name: Exécuter la suite de tests
         run: python -m pytest --cov=app -v
