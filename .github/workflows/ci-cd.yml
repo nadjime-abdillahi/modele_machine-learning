@@ -40,6 +40,13 @@ jobs:
       - name: Exécuter la suite de tests
         run: python -m pytest --cov=app -v
 
+      - name: Exécuter la suite de tests
+        env:
+          DATABASE_URL: "sqlite:///:memory:"
+        run: python -m pytest --cov=app -v
+
+
+
   # -------------------------------------------------------------
   # EXIGENCE 2 : Gestion de l'environnement STAGING (Branche staging)
   # -------------------------------------------------------------
@@ -87,3 +94,4 @@ jobs:
           echo "Déploiement sur l'environnement de Production..."
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
