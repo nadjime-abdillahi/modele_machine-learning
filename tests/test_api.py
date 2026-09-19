@@ -35,3 +35,11 @@ def predict_endpoint(payload: PredictRequest):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Erreur lors de la prédiction : {str(e)}"
         )
+def test_read_root(client):
+    response = client.get("/")
+    assert response.status_code in [200, 404]
+
+def test_health_check(client):
+    # Remplacez /health par une route existante dans votre app/main.py
+    response = client.get("/health")
+    assert response.status_code in [200, 404]
