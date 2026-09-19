@@ -28,22 +28,17 @@ jobs:
           python-version: '3.10'
           cache: 'pip'
 
-      - name: Setup SSH Key
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
       - name: Installation des dépendances
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; 
-          pip install pytest flake8
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install pytest flake8 pytest-cov
 
       - name: Contrôle de la qualité du code (Linter)
         run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 
       - name: Exécuter la suite de tests
-        run: pytest tests/
+        run: python -m pytest --cov=app -v
 
   # -------------------------------------------------------------
   # EXIGENCE 2 : Gestion de l'environnement STAGING (Branche staging)
@@ -60,10 +55,15 @@ jobs:
       - name: Récupérer le code
         uses: actions/checkout@v4
 
+      # Si vous avez besoin du SSH UNIQUEMENT lors du déploiement :
+      # - name: Setup SSH Key
+      #   uses: webfactory/ssh-agent@v0.9.0
+      #   with:
+      #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: Déployer en Staging
         run: |
           echo "Déploiement sur l'environnement de Pré-production..."
-          # Vos commandes de déploiement (Docker, SSH, Cloud, etc.)
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
@@ -76,7 +76,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     environment:
       name: production
-      url: https://github.com/nadjime-abdillahi/modele_machine-learning.git
+      url: https://votre-app.com
     runs-on: ubuntu-latest
     steps:
       - name: Récupérer le code
@@ -85,6 +85,5 @@ jobs:
       - name: Déployer en Production
         run: |
           echo "Déploiement sur l'environnement de Production..."
-          # Vos commandes de déploiement
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
