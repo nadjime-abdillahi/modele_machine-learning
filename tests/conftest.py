@@ -13,3 +13,4 @@ def setup_database():
 @pytest.fixture
 def client():
     return TestClient(app)
+

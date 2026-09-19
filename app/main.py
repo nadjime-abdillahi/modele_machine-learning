@@ -4,7 +4,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 import sys
 from pathlib import Path
-from database import engine, Base, get_db
+from .database import engine, Base, get_db
 import models
 import schemas
 
