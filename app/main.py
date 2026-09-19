@@ -5,8 +5,9 @@ from sqlalchemy.orm import Session
 import sys
 from pathlib import Path
 from .database import engine, Base, get_db
-import models
 import schemas
+from . import models
+from .ml_model import predict
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 # Crée les tables au démarrage s'il ne s'agit pas d'un système de migration automatisé

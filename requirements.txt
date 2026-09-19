@@ -8,5 +8,5 @@ pandas
 joblib
 httpx
 sqlalchemy
-dotenv
-psycopg2
+python-dotenv
+psycopg2-binary
